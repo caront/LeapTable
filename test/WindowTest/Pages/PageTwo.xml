@@ -1,0 +1,5 @@
+<Page Background="0xffffffff" Tag="PageTwo">
+    <Object Type="CurcularButton" Tag="ButtonThree" Posx="1" Posy="1" Radius="5"
+    Background="0xffff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="Go to PageTwo" OnClick="OnButtonClick_4"/>
+     <Object Type="TextBlock" Tag="PageTwoHeader" Posx="10" Posy="40" Text="You'r on second page" Font="[some tag]" TextSize="20" Foreground="0xff26aaff" />
+</Page>

@@ -1,0 +1,11 @@
+<Page Background="0xffffffff" Tag="PageOne">
+    <Object Type="Button" Tag="ButtonOne" Posx="10" Posy="10" Height="20" Width="10" 
+        Background="0xffff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="Click On Me" OnClick="OnButtonClick_2"/>
+    <Object Type="Button" Tag="ButtonTwo" Posx="30" Posy="10" Height="20" Width="10" 
+        Background="0xfff42580" Foreground="0x424242ff" Border="0x424242ff" ContentText="ButtonText" OnClick="OnButtonClick_3"/>
+    <Object Type="Button" Tag="ButtonThree" Posx="30" Posy="30" Height="30" Width="10" 
+        Background="0xffff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="Go to PageTwo" OnClick="OnButtonClick_4"/>
+    <Object Type="TextBlock" Tag="Text" Posx="10" Posy="40" Text="I'm a text" Font="[some tag]" TextSize="20" Foreground="0xff26aaff" />
+    
+    <Object Type="3DSurface" Tag="3DSurface" Posx="0" Posy="0" Height="100" Width="100"/>
+</Page>

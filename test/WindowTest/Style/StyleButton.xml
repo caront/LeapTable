@@ -1,0 +1,17 @@
+<Style Target="Button" Tag="StyleButtonOne">
+    <Chidren>
+        <rec pos tag="mainrec">
+        <Text tag="content">
+    </Chidren>
+    <State Name="Click">
+            <rec pos tag="mainrec" forground="color">
+        <Text tag="content">
+  
+    </State>
+    <State Name="focus">
+            <rec pos tag="mainrec" forground="color">
+        <Text tag="content">
+  
+    </State>
+    
+</Style>
