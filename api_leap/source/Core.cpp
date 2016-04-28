@@ -1,10 +1,12 @@
 #include "Core.hpp"
+#include "Log.hpp"
 
-Core::Core(std::string folderpath)
+Core::Core(std::string folderpath, CallBackListener *callbacklisternet)
 {
 
-	collectionElement = new CollectionElement(folderpath);
+	collectionElement = new CollectionElement(folderpath, callbacklisternet);
 	controller = new Controller(this);
+	event = new EventListener();
 }
 
 Core::~Core()
@@ -14,17 +16,19 @@ Core::~Core()
 void Core::Init()
 {
 	collectionElement->InitCollection();
-	controller->Init();
+	controller->Init(collectionElement->getMenu());
 	controller->LoadPage(collectionElement->getMainPage());
-	//this->NavigateTo("PageOne");
 }
 
 void Core::Run()
 {
+	controller->Render(event->menushow);
+	event->Init();
 	while (controller->IsWindowOpen())
 	{
-		controller->Render();
-		controller->Event();
+		event->CheckEvent(this, controller->page);
+		controller->Render(event->menushow);
+		controller->Event(event->menushow);	
 	}
 
 }
@@ -39,5 +43,4 @@ void Core::NavigateTo(std::string pageTag)
 {
 	Page *page = collectionElement->getPageByTag(pageTag);
 	controller->LoadPage(page);
-
 }

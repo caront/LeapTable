@@ -1,6 +1,7 @@
 #include "DownSlide.hpp"
 
-DownSlide::DownSlide(Controler 	&controler) : Gesture(controler, 2, 0, 1, 10){}
+DownSlide::DownSlide(Controler 	&controler, CoreShared &coreShared) 
+	: Gesture(controler, coreShared, 2, 0, 1, 10){}
 
 DownSlide::~DownSlide(){}
 

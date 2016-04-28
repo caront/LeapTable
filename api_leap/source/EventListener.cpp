@@ -1,8 +1,18 @@
 #include "EventListener.hpp"
+#include "Log.hpp"
 
-EventListener::EventListener(){}
+EventListener::EventListener(){
+	menushow = false;
+}
 
 EventListener::~EventListener(){}
+
+void EventListener::Init()
+{
+	_prosse = new Prosse();
+	_prosse->Init();
+	_prosse->Open();
+}
 
 void EventListener::setCloseEvent(std::function<void(void*, void*)> event)
 {
@@ -35,4 +45,18 @@ void EventListener::execHideMenuEvent(void* arg1, void* arg2){
 
 void EventListener::execStartEvent(void* arg1, void* arg2){
 	_startCallBack(arg1, arg2);
+}
+
+void EventListener::CheckEvent(void* arg1, void *arg2){
+	if (_prosse->GetData() == STOP)
+		execCloseEvent(arg1, arg2);
+	else if (_prosse->GetData() == SHOWMENU)
+	{
+		if (!menushow)
+			execShowMenuEvent(arg1, arg2);
+		else
+			execHideMenuEvent(arg1, arg2);
+		menushow = !menushow;
+	}
+	_prosse->PutData("");
 }

@@ -16,8 +16,6 @@ public:
 	CallBackListener();
 	~CallBackListener();
 
-	void Init();
-	
 	void Add(std::string, std::function<void(void*, void*)>);
 
 	std::function<void(void*, void*)> GetFunctionByTag(std::string);

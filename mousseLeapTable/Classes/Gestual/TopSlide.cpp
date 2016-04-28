@@ -1,6 +1,7 @@
 #include "TopSlide.hpp"
 
-TopSlide::TopSlide(Controler 	&controler) : Gesture(controler, 2, 0, 1, 10){}
+TopSlide::TopSlide(Controler 	&controler, CoreShared &coreShared) 
+	: Gesture(controler, coreShared, 2, 0, 1, 10){}
 
 TopSlide::~TopSlide(){}
 

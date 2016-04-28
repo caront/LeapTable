@@ -5,7 +5,7 @@
 
 class UpSlide : public Gesture {
 public:
-	UpSlide(Controler &controler);
+	UpSlide(Controler &controler, CoreShared &coreShared);
 	~UpSlide();
 	
 	virtual bool 	isThat(Leap::SwipeGesture sG);

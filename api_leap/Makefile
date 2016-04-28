@@ -15,6 +15,8 @@ NAME = libapileap.so
 
 INCPATH = ./include
 
+INCCOMMONPATH = ../common
+
 SRCPATH = ./source
 
 LIBPATH = ./lib
@@ -25,7 +27,7 @@ OBJPATH = $(SRCPATH)
 
 OUT = $(LIBPATH)/$(NAME)
 
-INCLUDES = -I $(INCPATH)
+INCLUDES = -I $(INCPATH) -I $(INCCOMMONPATH)
 
 SRCLIB = 	$(SRCPATH)/CallBackListener.cpp\
 		$(SRCPATH)/Controller.cpp\
@@ -41,9 +43,13 @@ SRCLIB = 	$(SRCPATH)/CallBackListener.cpp\
 		$(SRCPATH)/Core.cpp\
 		$(SRCPATH)/UIButtonCircle.cpp\
 		$(SRCPATH)/WindowXMlReader.cpp\
-		$(SRCPATH)/CallBack.cpp\
 		$(SRCPATH)/ScreenInfo.cpp\
 		$(SRCPATH)/EventListener.cpp\
+		$(SRCPATH)/Prosse.cpp\
+		$(SRCPATH)/GetWindowsID.cpp\
+		$(SRCPATH)/UIMenu.cpp\
+		$(SRCPATH)/UIMenuElement.cpp\
+		$(SRCPATH)/UIImage.cpp\
 
 
 SRC = $(SRCLIB) $(SRCTINY)
@@ -68,3 +74,4 @@ fclean: clean
 	rm -f $(OUT)
 
 re : fclean default
+

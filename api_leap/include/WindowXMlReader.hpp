@@ -10,7 +10,8 @@
 #include "CollectionElement.hpp"
 #include "UIButtonCircle.hpp"
 #include "Log.hpp"
-
+#include "UIMenu.hpp"
+#include "UIImage.hpp"
 
 class CollectionElement;
 class Page;
@@ -36,11 +37,13 @@ public:
 
 	Page				*ReadPageDoc(std::string fileName, CollectionElement *collectionElement);
 
+	UIMenu 				*ReadMenuDoc(CollectionElement *collectionElement);
 
-
+	UIMenuElement 		*GetMenuElement(tinyxml2::XMLElement *element, CollectionElement *collectionElement);
 	UIButton			*GetButton(tinyxml2::XMLElement *element, CollectionElement *collectionElement);
 	UiButtonCircle		*GetButtonCircle(tinyxml2::XMLElement *element, CollectionElement *collectionElement);
 	UIText				*GetText(tinyxml2::XMLElement *element);
+	UIImage 			*GetImage(tinyxml2::XMLElement *element);
 	static bool			OpenDoc(tinyxml2::XMLDocument *doc, std::string filePath);
 };
 

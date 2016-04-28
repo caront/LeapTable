@@ -1,2 +1,1 @@
-LD_LIBRARY_PATH= /lib64/
-export LD_LIBRARY_PATH
+sudo cp api_leap/lib/libapileap.so /lib/

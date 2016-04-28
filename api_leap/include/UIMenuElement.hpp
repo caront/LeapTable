@@ -4,11 +4,11 @@
 #include "UIButtonCircle.hpp"
 #include <functional>
 
-class UIMenuElement : UiButtonCircle
+class UIMenuElement : public UiButtonCircle
 {
 public:
-	UIMenuElement(td::string tag,
-	 std::string text, std::function<void(void*, void*)> onClickCallBack);
+	UIMenuElement(std::string tag,
+	 std::string text, std::function<void(void*, void*)> onClickCallBack, int color, int forground);
 	~UIMenuElement();
 	
 };

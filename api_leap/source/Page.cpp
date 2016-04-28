@@ -22,7 +22,6 @@ void Page::Init(float x, float y)
 
 void Page::AddElement(UIObject *obj)
 {
-	std::cout << "obj add : " << obj->getTag() << std::endl;
 	_listObject->Add(obj);
 }
 

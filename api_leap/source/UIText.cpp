@@ -23,7 +23,6 @@ void		UIText::InitiazeCompoment()
 	_textShape->setString(_text);
 	_textShape->setCharacterSize(_textSize);
 	_textShape->setFont(*_font);
-	//_textShape->setColor(sf::Color(0, 0, 0, 255));
 	_textShape->setColor(sf::Color(_foreground.argb.r, _foreground.argb.g, _foreground.argb.b, _foreground.argb.a));
 }
 void		UIText::Draw(sf::RenderWindow *window)
@@ -75,6 +74,15 @@ Color		UIText::getForground() const{
 	return _foreground;
 }
 
+void 		UIText::originInMidle()
+{
+	setOrigin(_textShape->getScale().x /2, _textShape->getScale().y /2);
+}
+
+void 		UIText::setOrigin(float x, float y)
+{
+	_textShape->setOrigin(x, y);
+}
 
 UIText		*UIText::NewText(std::string Tag, float PosX, float PosY,
 	std::string text, sf::Font *font, int textSize, int forground){

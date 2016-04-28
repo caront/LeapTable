@@ -5,7 +5,7 @@
 
 class LeftSlide : public Gesture {
 public:
-	LeftSlide(Controler &controler);
+	LeftSlide(Controler &controler, CoreShared &coreShared);
 	~LeftSlide();
 	
 	virtual bool 	isThat(Leap::SwipeGesture sG);

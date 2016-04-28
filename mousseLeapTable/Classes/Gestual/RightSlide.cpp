@@ -1,8 +1,8 @@
 #include "RightSlide.hpp"
 #include <unistd.h>
 
-RightSlide::RightSlide(Controler 	&controler) 
-	: Gesture(controler, 2, 0, 1, 10){}
+RightSlide::RightSlide(Controler &controler, CoreShared &coreShared) 
+	: Gesture(controler, coreShared, 2, 0, 1, 10){}
 
 RightSlide::~RightSlide(){}
 

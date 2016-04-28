@@ -1,13 +1,13 @@
 #include "GestureList.hpp"
 
-GestureList::GestureList(Controler 	&controler)
+GestureList::GestureList(Controler 	&controler, CoreShared &coreShared)
 	: _controler(controler)
 {
-	_list.push_back(new LeftSlide(controler));
-	_list.push_back(new RightSlide(controler));
-	_list.push_back(new DownSlide(controler));
-	/*_list.push_back(new UpSlide(controler));
-	_list.push_back(new TopSlide(controler));
+	_list.push_back(new LeftSlide(controler, coreShared));
+	_list.push_back(new RightSlide(controler, coreShared));
+	_list.push_back(new DownSlide(controler, coreShared));
+	_list.push_back(new UpSlide(controler, coreShared));
+	/*_list.push_back(new TopSlide(controler));
 	_list.push_back(new BottomSlide(controler));*/
 	_cooldown = 0;
 }

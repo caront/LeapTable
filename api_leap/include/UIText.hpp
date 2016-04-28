@@ -45,8 +45,12 @@ public:
 	sf::Font	getTextFont() const;
 	Color		getForground() const;
 
+	void		originInMidle();
+	void 		setOrigin(float x, float y);
+
 	static UIText	*NewText(std::string Tag, float PosX, float PosY,
 		std::string text, sf::Font *font, int textSize, int forground);
+
 };
 
 #endif

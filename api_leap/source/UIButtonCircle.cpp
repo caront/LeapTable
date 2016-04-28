@@ -1,4 +1,5 @@
 #include "UIButtonCircle.hpp"
+#include "Log.hpp"
 
 UiButtonCircle::UiButtonCircle(std::string Tag, float PosX, float PosY, float Radius,
 	int background, int foreground, int border, std::string Text, std::function<void(void*, void*)> onClickCallBack)
@@ -27,13 +28,15 @@ UiButtonCircle::~UiButtonCircle()
 void		UiButtonCircle::InitiazeCompoment()
 {
 	sf::Font *font = new sf::Font();
-	const std::string fontpath = "./WindowTest/Assets/Fonts/Aaargh.ttf";
+	const std::string fontpath = "./window/Assets/Fonts/Aaargh.ttf";
 	if (!font->loadFromFile(fontpath))
 		getchar();
 	shape = new sf::CircleShape();
 	shape->setRadius(_height);
 	shape->setPosition(sf::Vector2f((float) _posX, (float) _posY));
-	//content = new UIText("", _posX, _posY, _text, font, 30, _foreground.c);
+	shape->setOutlineThickness(3);
+	content = new UIText("", _posX + _height / 2, _posY + _height / 2, _text, font, 30, _foreground.c);
+	content->originInMidle();
 	this->Reset();
 }
 
@@ -41,7 +44,7 @@ void		UiButtonCircle::Draw(sf::RenderWindow *window){
 	if (_UIPropChanged)
 		OnWindowsSizeChange(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y));
 	window->draw(*shape);
-	//content->Draw(window);
+	content->Draw(window);
 	_UIPropChanged = false;
 }
 
@@ -52,12 +55,12 @@ void		UiButtonCircle::Reset(){
 	{
 		shape->setOutlineColor(sf::Color(_background.argb.r, _background.argb.g, _background.argb.b, _background.argb.a));
 		shape->setFillColor(sf::Color(_foreground.argb.r, _foreground.argb.g, _foreground.argb.b, _foreground.argb.a));
-		//content->setForground(_border);
+		content->setForground(_border);
 		if (_isClick)
 		{
 			shape->setOutlineColor(sf::Color(_background.argb.r, _background.argb.g, _background.argb.b, _background.argb.a));
 			shape->setFillColor(sf::Color(_border.argb.r, _border.argb.g, _border.argb.b, _border.argb.a));
-			//content->setForground(_background);
+			content->setForground(_background);
 			return;
 		}
 	}
@@ -65,7 +68,7 @@ void		UiButtonCircle::Reset(){
 	{
 		shape->setFillColor(sf::Color(_background.argb.r, _background.argb.g, _background.argb.b, _background.argb.a));
 		shape->setOutlineColor(sf::Color(_foreground.argb.r, _foreground.argb.g, _foreground.argb.b, _foreground.argb.a));
-		//content->setForground(_foreground);
+		content->setForground(_foreground);
 
 	}
 }
@@ -102,13 +105,23 @@ void		UiButtonCircle::OnWindowsSizeChange(float x, float y)
 {
 	shape->setRadius(x * (_height / 100));
 	shape->setPosition(sf::Vector2f(x * (_posX / 100), y *(_posY / 100)));
-//	content->setPosX(_posX);
-	//content->setPosY(_posY);
-	//content->OnWindowsSizeChange(x, y);
+	content->setPosX(_posX + _height / 2);
+	content->setPosY(_posY + _height / 2);
+	content->OnWindowsSizeChange(x, y);
+	content->originInMidle();
 }
 
 void		UiButtonCircle::OnClick(void *arg){
-	_onClickCallBack(this, arg);
+	LOG("OnClick");
+	try
+	{
+		_onClickCallBack(this, arg);
+	}
+	catch(const std::bad_function_call& ex)
+	{
+		ERROR(ex.what());
+	}
+
 }
 
 

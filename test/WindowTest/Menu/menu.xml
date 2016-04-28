@@ -1,0 +1,6 @@
+<Menu Color="0xffff0000">
+	<Element Color="0xff302050" Forground="0xffffffff" Pos="Up" Callback="OnButtonClick_4" Text="Up"/>
+	<Element Color="0xff302050" Forground="0xffffffff" Pos="Down" Callback="OnButtonClick_4" Text="Down"/>
+	<Element Color="0xff302050" Forground="0xffffffff" Pos="Left" Callback="OnButtonClick_4" Text="Left"/>
+	<Element Color="0xff302050" Forground="0xffffffff" Pos="Right" Callback="OnButtonClick_4" Text="Right"/>
+</Menu>

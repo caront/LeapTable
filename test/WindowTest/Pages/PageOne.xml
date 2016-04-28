@@ -1,4 +1,6 @@
 <Page Background="0xffffffff" Tag="PageOne">
+   <Object Type="Image" Tag="BackgroundImage" Posx="0" Posy="0" Sizex="1.88" Sizey="2.11" Image="Map_Starwars_3.png"/>
+    
     <Object Type="Button" Tag="ButtonOne" Posx="10" Posy="10" Height="20" Width="10" 
         Background="0xffff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="Click On Me" OnClick="OnButtonClick_2"/>
     <Object Type="Button" Tag="ButtonTwo" Posx="30" Posy="10" Height="20" Width="10" 
@@ -8,4 +10,7 @@
     <Object Type="TextBlock" Tag="Text" Posx="10" Posy="40" Text="I'm a text" Font="[some tag]" TextSize="20" Foreground="0xff26aaff" />
     
     <Object Type="3DSurface" Tag="3DSurface" Posx="0" Posy="0" Height="100" Width="100"/>
+    <Object Type="CurcularButton" Tag="ButtonThree" Posx="1" Posy="1" Radius="5"
+    Background="0xffff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="test" OnClick="OnButtonClick_4"/>
+   
 </Page>

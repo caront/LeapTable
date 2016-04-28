@@ -1,14 +1,13 @@
 NAME		=	test
 
 SRC		= 		main.cpp\
-
-				
+				callback.cpp\
 
 OBJ		=       $(SRC:.cpp=.o)
 
 LDFLAGS		+=	-lapileap -L ../api_leap/lib 
 
-CXXFLAGS	+=	-Wall -ggdb3 -std=c++11 -I ../api_leap/include
+CXXFLAGS	+=	-Wall -ggdb3 -std=c++11 -I ../api_leap/include -I ../common
 
 CXX			=	clang++
 

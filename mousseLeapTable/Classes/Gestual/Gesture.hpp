@@ -5,6 +5,8 @@
 #include "Controler.hpp"
 #include "Output.hpp"
 
+#include "CoreShared.hpp"
+
 #define MAXRANGE 0.1
 #define MINRANGE -MAXRANGE
 
@@ -17,11 +19,12 @@ protected:
 	int 		_handNbr;
 	int 		_tick;
 	Controler 	&_controler;
+	CoreShared 	&_coreShared;
 	Output 		_output;
 
 
 public:
-	Gesture(Controler 	&controler, int fingerNbrR,int fingerNbrL, int handNbr, int tick);
+	Gesture(Controler &controler, CoreShared &coreShared, int fingerNbrR,int fingerNbrL, int handNbr, int tick);
 	~Gesture();
 
 	virtual bool 	isThat(Leap::SwipeGesture sG) = 0;

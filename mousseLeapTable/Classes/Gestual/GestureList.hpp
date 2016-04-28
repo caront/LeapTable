@@ -26,7 +26,7 @@ private:
 	int 					_cooldown;
 
 public:
-	GestureList(Controler 	&controler);
+	GestureList(Controler 	&controler, CoreShared &coreShared);
 	~GestureList();
 
 	bool Search(Leap::Gesture leapGesture);

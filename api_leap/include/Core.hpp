@@ -5,6 +5,8 @@
 #include "UIButton.hpp"
 #include "Controller.hpp"
 
+#include "EventListener.hpp"
+
 class Controller;
 class CollectionElement;
 
@@ -13,14 +15,14 @@ class Core
 public:
 	CollectionElement *collectionElement;
 
-	
+	EventListener 	*event;
 
 private:
 	Controller *controller;
 
 
 public :
-	Core(std::string folderpath);
+	Core(std::string folderpath, CallBackListener *callBackListener);
 	~Core();
 
 	void Init();

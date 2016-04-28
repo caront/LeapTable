@@ -2,6 +2,9 @@ NAME		=	./LeapMousseDemon
 
 SRC_CORE = 		Classes/Core/Core.cpp\
 				Classes/Core/Controler.cpp\
+				Classes/Core/GetWindowsID.cpp\
+				Classes/Core/Prosse.cpp\
+				Classes/Core/CoreShared.cpp\
 
 SRC_OUTPUT =	Classes/Output/Output.cpp\
 
@@ -30,7 +33,7 @@ OBJ		=       $(SRC:.cpp=.o)
 
 LDFLAGS		+=	-lm /lib64/libLeap.so -L usr/local/lib
 
-CXXFLAGS	+=	 -std=c++11 -Wall -ggdb3 -I ./lib -I ./Classes/Core -I ./Classes/Gestual -I ./Classes/Output
+CXXFLAGS	+=	 -std=c++11 -Wall -ggdb3 -I ./lib -I ../common -I ./Classes/Core -I ./Classes/Gestual -I ./Classes/Output
 
 CXX		=	clang++
 

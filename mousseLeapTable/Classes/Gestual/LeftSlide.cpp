@@ -2,7 +2,8 @@
 
 #include <unistd.h>
 
-LeftSlide::LeftSlide(Controler 	&controler) : Gesture(controler, 2, 0, 1, 10){}
+LeftSlide::LeftSlide(Controler 	&controler, CoreShared &coreShared) 
+: Gesture(controler, coreShared, 2, 0, 1, 10){}
 
 LeftSlide::~LeftSlide(){}
 

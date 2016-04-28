@@ -4,7 +4,7 @@
 #include <string>
 #include <map>
 #include "Page.hpp"
-
+#include "UIMenu.hpp"
 class WindowXMlReader;
 class Page;
 
@@ -21,7 +21,8 @@ private:
 	std::string						_collectionFolderPath;
 
 public:
-	CollectionElement(std::string CollectionFolderPath);
+	CollectionElement(std::string CollectionFolderPath,
+	 CallBackListener *callBackListener);
 	~CollectionElement();
 
 	void		InitCollection();
@@ -30,6 +31,8 @@ public:
 //	UIObject	*getTextureByTag(std::string tag);
 	UIObject	*getCallbackByTag(std::string tag);
 	sf::Font	*getfontByTag(std::string tag);
+
+	UIMenu		*getMenu();
 
 	Page		*getPageByTag(std::string tag);
 	Page		*getMainPage();

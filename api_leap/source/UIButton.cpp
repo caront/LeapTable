@@ -36,7 +36,7 @@ UIButton::~UIButton()
 void		UIButton::InitiazeCompoment()
 {
 	sf::Font *font = new sf::Font();
-	const std::string fontpath = "./WindowTest/Assets/Fonts/Aaargh.ttf";
+	const std::string fontpath = "./window/Assets/Fonts/Aaargh.ttf";
 	if (!font->loadFromFile(fontpath))
 	{
 		getchar();
@@ -44,17 +44,15 @@ void		UIButton::InitiazeCompoment()
 	shape = new sf::RectangleShape();
 	shape->setSize(sf::Vector2f((float) _height, (float) _width));
 	shape->setPosition(sf::Vector2f((float) _posX, (float) _posY));
-	shader.setParameter("color", sf::Color(191, 191, 191));
+	shape->setOutlineThickness(3);
 	content = new UIText("", _posX, _posY, _text, font, 30, _foreground.c);
+	content->originInMidle();
 	this->Reset();
 }
 
 void		UIButton::Draw(sf::RenderWindow *window){
 	if (_UIPropChanged)
 		OnWindowsSizeChange(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y));
-	/*if (_isFocus)
-		window->draw(*shape, &shader);
-		else*/
 	window->draw(*shape);
 	content->Draw(window);
 	_UIPropChanged = false;
@@ -116,14 +114,12 @@ void		UIButton::OnWindowsSizeChange(float x, float y)
 {
 	shape->setSize(sf::Vector2f(x * (_height / 100), y *(_width / 100)));
 	shape->setPosition(sf::Vector2f(x * (_posX / 100), y *(_posY / 100)));
-	shader.setParameter("windowHeight", static_cast<float>(y));
-	shader.setParameter("center", shape->getPosition());
-	shader.setParameter("radius", 200.f);
-	shader.setParameter("expand", 0.25f);
 
 	content->setPosX(_posX);
 	content->setPosY(_posY);
 	content->OnWindowsSizeChange(x, y);
+	content->originInMidle();
+	
 }
 
 void		UIButton::OnClick(void *arg){

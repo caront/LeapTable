@@ -5,7 +5,7 @@
 
 class BottomSlide : public Gesture {
 public:
-	BottomSlide(Controler &controler);
+	BottomSlide(Controler &controler,CoreShared &coreShared);
 	~BottomSlide();
 	
 	virtual bool 	isThat(Leap::SwipeGesture sG);

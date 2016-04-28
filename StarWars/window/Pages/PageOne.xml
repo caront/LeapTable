@@ -1,0 +1,8 @@
+<Page Background="0xffffffff" Tag="PageOne">
+   <Object Type="Image" Tag="BackgroundImage" Posx="0" Posy="0" Sizex="1.88" Sizey="2.11" Image="Map_Starwars_3.png"/>
+    
+   <Object Type="Button" Tag="ButtonOne" Posx="10" Posy="10" Height="20" Width="10" 
+        Background="0x00ff0000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="Click On Me" OnClick="OnButtonClick_4"/>
+   
+   
+</Page>

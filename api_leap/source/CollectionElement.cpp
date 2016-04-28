@@ -1,11 +1,11 @@
 #include "CollectionElement.hpp"
 
 #include "Log.hpp"
-CollectionElement::CollectionElement(std::string CollectionFolderPath)
+CollectionElement::CollectionElement(std::string CollectionFolderPath, CallBackListener *callbackListener)
 	: _collectionFolderPath(CollectionFolderPath)
 {
 	_reader = new WindowXMlReader(CollectionFolderPath);
-	callbackListener = new CallBackListener();
+	this->callbackListener = callbackListener;
 }
 
 
@@ -15,7 +15,6 @@ CollectionElement::~CollectionElement()
 
 void			CollectionElement::InitCollection()
 {
-	callbackListener->Init();
 	_reader->Init();
 	this->InitPageCollection();
 }
@@ -35,6 +34,11 @@ void		CollectionElement::InitPageCollection()
 			_pages[tmp->getTag()] = tmp;
 		}
 	}
+}
+
+UIMenu 		*CollectionElement::getMenu()
+{
+	return _reader->ReadMenuDoc(this);
 }
 
 void		CollectionElement::InitTextureCollection()

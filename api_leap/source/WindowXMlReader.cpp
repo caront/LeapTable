@@ -70,6 +70,8 @@ Page				*WindowXMlReader::ReadPageDoc(std::string fileName, CollectionElement *c
 			ret->AddElement(this->GetButtonCircle(element, collectionElement));
 		if (std::string(element->Attribute("Type")) == "TextBlock")
 			ret->AddElement(this->GetText(element));
+		if (std::string(element->Attribute("Type")) == "Image")
+			ret->AddElement(this->GetImage(element));
 	}
 	return ret;
 }
@@ -106,15 +108,12 @@ UiButtonCircle		*WindowXMlReader::GetButtonCircle(tinyxml2::XMLElement *buttonIn
 UIText			*WindowXMlReader::GetText(tinyxml2::XMLElement *textInfoXML)
 {
 	sf::Font *font = new sf::Font();
-	const std::string fontpath = "./WindowTest/Assets/Fonts/Aaargh.ttf";
+	const std::string fontpath = "./window/Assets/Fonts/Aaargh.ttf";
 	if (!font->loadFromFile(fontpath))
 	{
 		//std::cout << font->getInfo().family << std::endl;
 		getchar();
 	}
-
-
-
 
 	return UIText::NewText(textInfoXML->Attribute("Tag"),
 		static_cast<float>(atof(textInfoXML->Attribute("Posx"))),
@@ -137,3 +136,41 @@ bool  WindowXMlReader::OpenDoc(tinyxml2::XMLDocument *doc, std::string filePath)
 	return true;
 }
 
+UIMenu *WindowXMlReader::ReadMenuDoc(CollectionElement *collectionElement)
+{
+	UIMenu *ret = new UIMenu();
+	tinyxml2::XMLElement *elementRoot;
+	tinyxml2::XMLDocument Pagedoc;
+	std::string fp = _rootPath + "/Menu/menu.xml" ;
+	std::cout << fp << std::endl;
+	if (!OpenDoc(&Pagedoc, fp))
+		return NULL;
+	elementRoot = Pagedoc.FirstChildElement("Menu");
+	ret->setColor(GetIntFromHexaString(std::string(elementRoot->Attribute("Color"))));
+	for (tinyxml2::XMLElement *element = elementRoot->FirstChildElement("Element");
+		element != NULL;
+		element = element->NextSiblingElement())
+	{
+		ret->addElement(GetMenuElement(element, collectionElement));
+	}
+	return ret;
+}
+
+UIMenuElement 		*WindowXMlReader::GetMenuElement(tinyxml2::XMLElement *element, CollectionElement *collectionElement)
+{
+	return new UIMenuElement(element->Attribute("Pos"),
+		element->Attribute("Text"),
+		collectionElement->callbackListener->GetFunctionByTag(element->Attribute("Callback")),
+		GetIntFromHexaString(std::string(element->Attribute("Color"))),
+		GetIntFromHexaString(std::string(element->Attribute("Forground"))));
+}
+
+UIImage 			*WindowXMlReader::GetImage(tinyxml2::XMLElement *element)
+{
+	return UIImage::NewImage(element->Attribute("Tag"),
+		static_cast<float>(atof(element->Attribute("Posx"))),
+		static_cast<float>(atof(element->Attribute("Posy"))),
+		static_cast<float>(atof(element->Attribute("Sizex"))),
+		static_cast<float>(atof(element->Attribute("Sizey"))),
+		_rootPath + "/Assets/Textures/" + element->Attribute("Image"));
+}
