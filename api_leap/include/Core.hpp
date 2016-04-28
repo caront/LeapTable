@@ -4,8 +4,10 @@
 #include "UIWindow.hpp"
 #include "UIButton.hpp"
 #include "Controller.hpp"
-
+#include "OpenGlUtils.hpp"
 #include "EventListener.hpp"
+
+#include "Object3D.hpp"
 
 class Controller;
 class CollectionElement;
@@ -14,7 +16,6 @@ class Core
 {
 public:
 	CollectionElement *collectionElement;
-
 	EventListener 	*event;
 
 private:

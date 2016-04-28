@@ -33,6 +33,13 @@ int main()
 	callBackListener->Add("OnButtonClick_2", OnButtonClick_2);
 	callBackListener->Add("OnButtonClick_3", OnButtonClick_3);
 	callBackListener->Add("OnButtonClick_4", OnButtonClick_4);
+	callBackListener->Add("GoBack", GoBack);
+	callBackListener->Add("UpModel", UpModel);
+	callBackListener->Add("DownModel", DownModel);
+	callBackListener->Add("LeftModel", LeftModel);
+	callBackListener->Add("RightModel", RightModel);
+	callBackListener->Add("GoPageCroiseur", GoPageCroiseur);
+	callBackListener->Add("GoPageLitesaber", GoPageLitesaber);
 
 	Core *core = new Core("window", callBackListener);
 

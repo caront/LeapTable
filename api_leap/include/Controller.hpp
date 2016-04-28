@@ -9,6 +9,8 @@
 #include "UIMenu.hpp"
 #include "ScreenInfo.hpp"
 #include "WindowXMlReader.hpp"
+#include "OpenGlUtils.hpp"
+#include "Object3D.hpp"
 
 class WindowXMlReader;
 class CollectionElement;
@@ -21,10 +23,11 @@ class Controller
 public:
 	Page	*page;
 	UIMenu 	*menu;
-
+	Object3D *object3D;
 private:
 	Core	*_core;
 	sf::RenderWindow *window;
+	OpenGlUtils 	*openGlUtils;
 	WindowXMlReader	 *reader;
 	sf::RectangleShape *menushadow;
 	

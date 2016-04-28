@@ -1,0 +1,30 @@
+<Page Background="0xffffffff" Tag="Croiseur">
+   	 <Object Type="Image" Tag="BackgroundImage" Posx="0" Posy="0" Sizex="1.88" Sizey="2.11" Source="Map_Starwars_3.png"/>
+
+	<Object Type="TextBlock" Tag="Title" Posx="20" Posy="10" Text="Croiseur" Font="[some tag]" TextSize="40" Foreground="0xff26aaff"/>
+
+
+   	 <!--obj3d-->
+
+ 	<Object Type="Image" Tag="tmp" Posx="15" Posy="32" Sizex="0.5" Sizey="0.75" Source="Map_Starwars_3.png"/>
+
+ 	 <Object Type="Button" Tag="buttonup" Posx="15" Posy="20" Height="27" Width="10" 
+   	Background="0x00ff0000" Foreground="0x000000ff" Border="0x0000ffff" ContentText="" OnClick="UpModel"/>
+
+
+ 	<Object Type="Button" Tag="buttonDown" Posx="15" Posy="70" Height="27" Width="10" 
+   	  	Background="0x00ff0000" Foreground="0x000000ff" Border="0x0000ffff" ContentText="" OnClick="DownModel"/>
+
+
+	<Object Type="Button" Tag="buttonLeft" Posx="5" Posy="27" Height="7" Width="40" 
+   	  	Background="0x00ff0000" Foreground="0x000000ff" Border="0x0000ffff" ContentText="" OnClick="LeftModel"/>
+
+	<Object Type="Button" Tag="buttonRight" Posx="45" Posy="27" Height="7" Width="40" 
+   	  	Background="0x00ff0000" Foreground="0x000000ff" Border="0x0000ffff" ContentText="" OnClick="RightModel"/>
+
+   	 <Object Type="TextBlock" Tag="description" Posx="60" Posy="30" Text="description" Font="[some tag]" TextSize="20" Foreground="0xff26aaff"/>
+
+	<Object Type="CurcularButton" Tag="ButtonGoBack" Posx="5" Posy="5" Radius="2.5"
+    Background="0x00000000" Foreground="0xff0000ff" Border="0xff00ffff" ContentText="<-" OnClick="GoBack"/>
+
+</Page>

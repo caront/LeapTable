@@ -56,7 +56,10 @@ Page				*WindowXMlReader::ReadPageDoc(std::string fileName, CollectionElement *c
 	LOG(fp);
 	std::cout << fp << std::endl;
 	if (!OpenDoc(&Pagedoc, fp))
+	{
+		ERROR("Can't OpenDoc" + fileName);
 		return NULL;
+	}
 	elementRoot = Pagedoc.FirstChildElement("Page");
 	ret->setTag(elementRoot->Attribute("Tag"));
 	ret->setBackground(GetIntFromHexaString(std::string(elementRoot->Attribute("Background"))));
@@ -72,6 +75,8 @@ Page				*WindowXMlReader::ReadPageDoc(std::string fileName, CollectionElement *c
 			ret->AddElement(this->GetText(element));
 		if (std::string(element->Attribute("Type")) == "Image")
 			ret->AddElement(this->GetImage(element));
+		if (std::string(element->Attribute("Type")) == "Rendu")
+			ret->AddElement(this->GetImage(element));		
 	}
 	return ret;
 }
@@ -172,5 +177,16 @@ UIImage 			*WindowXMlReader::GetImage(tinyxml2::XMLElement *element)
 		static_cast<float>(atof(element->Attribute("Posy"))),
 		static_cast<float>(atof(element->Attribute("Sizex"))),
 		static_cast<float>(atof(element->Attribute("Sizey"))),
-		_rootPath + "/Assets/Textures/" + element->Attribute("Image"));
+		_rootPath + "/Assets/Textures/" + element->Attribute("Source"));
+}
+
+
+UIImage 			*WindowXMlReader::GetModel(tinyxml2::XMLElement *element)
+{
+	return UIImage::NewImage(element->Attribute("Tag"),
+		static_cast<float>(atof(element->Attribute("Posx"))),
+		static_cast<float>(atof(element->Attribute("Posy"))),
+		static_cast<float>(atof(element->Attribute("Sizex"))),
+		static_cast<float>(atof(element->Attribute("Sizey"))),
+		_rootPath + "/Assets/3DModels/" + element->Attribute("Source"));
 }

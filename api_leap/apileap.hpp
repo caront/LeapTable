@@ -16,5 +16,6 @@
 #include "./UIText.hpp"
 #include "./UIWindow.hpp"
 #include "./WindowXMlReader.hpp"
+#include "./Object3d.hpp"
 
 #endif

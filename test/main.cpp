@@ -6,7 +6,7 @@
 void ExitEvent(void *arg1, void *arg2)
 {
 	LOG("EXIT");
-	Core *core = (Core *)arg1;
+	//Core *core = (Core *)arg1;
 	Page *page = (Page *)arg2;
 
 	LOG(page->getTag());
@@ -27,7 +27,10 @@ void HideMenu(void *arg1, void *arg2)
 
 int main()
 {
-	CallBackListener *callBackListener = new CallBackListener();
+
+	
+
+	/*CallBackListener *callBackListener = new CallBackListener();
 
 	callBackListener->Add("OnButtonClick_1", OnButtonClick_1);
 	callBackListener->Add("OnButtonClick_2", OnButtonClick_2);
@@ -42,6 +45,6 @@ int main()
 
 	core->Init();
 	core->Run();
-
+*/
 	return 0;
 }

@@ -2,7 +2,7 @@
 
 #include "apileap.hpp"
 
-void		OnClickTest(void *sender, void *arg)
+void	OnClickTest(void *sender, void *arg)
 {
 	UIButton *button = static_cast<UIButton*>(sender);
 
@@ -43,4 +43,58 @@ void	OnButtonClick_4(void *sender, void*args)
 	Core *core = static_cast<Core *>(args);
 	
 	core->NavigateTo("PageTwo");
+}
+
+
+void	GoBack(void *sender, void*args)
+{
+	Core *core = static_cast<Core *>(args);
+	
+	core->NavigateTo("PageOne");
+}
+
+
+void 	UpModel(void *sendr, void *args)
+{
+
+}
+
+void 	DownModel(void *sendr, void *args)
+{
+
+}
+
+void 	LeftModel(void *sendr, void *args)
+{
+
+}
+
+void 	RightModel(void *sendr, void *args)
+{
+
+}
+
+void 	OnPageLoadOne(void *sender, void *args)
+{
+
+}
+
+void 	OnPageLoadTwo(void *sender, void *args)
+{
+
+}
+
+void 	GoPageCroiseur(void *sender, void *args)
+{
+	Core *core = static_cast<Core *>(args);
+	
+	core->NavigateTo("Croiseur");
+}
+
+void 	GoPageLitesaber(void *sender, void *args)
+{
+	Core *core = static_cast<Core *>(args);
+	
+	core->NavigateTo("LiteSaber");
+
 }

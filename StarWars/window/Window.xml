@@ -1,4 +1,6 @@
 <Window Title="Hello World">
     <Page File="PageOne.xml" Tag="PageOne"/>
     <Page File="PageTwo.xml" Tag="PageTwo"/>
+    <Page File="Croiseur.xml" Tag="Croiseur"/>
+    <Page File="LiteSaber.xml" Tag="LiteSaber"/>
 </Window>

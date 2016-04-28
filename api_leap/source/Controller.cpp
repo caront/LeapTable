@@ -1,5 +1,14 @@
 #include "Controller.hpp"
-//#include "CallBack.h"
+
+
+
+void OnResize(int nw, int nh) {
+  glViewport(0, 0, nw, nh);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  gluPerspective(60, float(nw)/nh, 0.1, 100);
+  glMatrixMode(GL_MODELVIEW);
+}
 
 Controller::Controller(Core *core)
 	:_core(core)
@@ -22,11 +31,15 @@ void Controller::Init(UIMenu *menu)
 {
 
 	//window = new sf::RenderWindow(sf::VideoMode(ScreenInfo::GetScreenInfo()->width, ScreenInfo::GetScreenInfo()->height, 32), "name", sf::Style::Fullscreen);
-	window = new sf::RenderWindow(sf::VideoMode(ScreenInfo::GetScreenInfo()->width, ScreenInfo::GetScreenInfo()->height, 32), "name");
+	window = new sf::RenderWindow(sf::VideoMode(ScreenInfo::GetScreenInfo()->width,ScreenInfo::GetScreenInfo()->height, 32), "name");
+	openGlUtils = new OpenGlUtils(*window);
 	this->menu = menu;
 	this->menu->Init(window);
 	menushadow->setSize(sf::Vector2f(static_cast<float> (window->getSize().x), static_cast<float> (window->getSize().y)));
 	menushadow->setFillColor(sf::Color(42, 42, 42, 150));
+	object3D = new Object3D("tag", "./object.obj", sf::Vector3f(-5, 0, -50), sf::Vector3f(0, 0, 0));
+	object3D->Init();
+
 }
 
 void Controller::LoadPage(Page *page)
@@ -37,9 +50,14 @@ void Controller::LoadPage(Page *page)
 
 void Controller::Render(bool showMenu)
 {
+	openGlUtils->Clean(object3D);
+	openGlUtils->Push();
 	page->Draw(window);
 	if (showMenu)
 		ShowMenu();
+	openGlUtils->Pop();
+	if (page->getTag() != "PageOne")
+		object3D->Draw();
 	window->display();
 }
 
@@ -69,6 +87,8 @@ void Controller::EventPage()
 		case sf::Event::MouseButtonReleased:
 			if ((obj = page->GetObjectOnClick(&event)) != NULL)
 				obj->OnClick(_core);
+		case sf::Event::Resized:
+			 OnResize(event.size.width, event.size.height);
 		default:
 			break;
 		}

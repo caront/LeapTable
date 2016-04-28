@@ -1,4 +1,4 @@
-<Page Background="0xffffffff" Tag="PageOne">
+<Page Background="0xffffffff" Tag="PageOne" OnLoad="PageLoadOne">
    <Object Type="Image" Tag="BackgroundImage" Posx="0" Posy="0" Sizex="1.88" Sizey="2.11" Image="Map_Starwars_3.png"/>
     
     <Object Type="Button" Tag="ButtonOne" Posx="10" Posy="10" Height="20" Width="10" 

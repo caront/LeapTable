@@ -44,6 +44,7 @@ public:
 	UiButtonCircle		*GetButtonCircle(tinyxml2::XMLElement *element, CollectionElement *collectionElement);
 	UIText				*GetText(tinyxml2::XMLElement *element);
 	UIImage 			*GetImage(tinyxml2::XMLElement *element);
+	UIImage 			*GetModel(tinyxml2::XMLElement *element);
 	static bool			OpenDoc(tinyxml2::XMLDocument *doc, std::string filePath);
 };
 

@@ -74,5 +74,5 @@ UIObject	*CollectionElement::getObjectByTag(std::string tag)
 
 Page		*CollectionElement::getMainPage()
 {
-	return (*_pages.begin()).second;
+	return getPageByTag("PageOne");
 }

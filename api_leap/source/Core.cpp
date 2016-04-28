@@ -27,6 +27,7 @@ void Core::Run()
 	while (controller->IsWindowOpen())
 	{
 		event->CheckEvent(this, controller->page);
+		
 		controller->Render(event->menushow);
 		controller->Event(event->menushow);	
 	}
@@ -38,6 +39,11 @@ void Core::Finish()
 
 }
 
+/*
+Object3D	*Core::GetFromCurent()
+{
+
+}*/
 
 void Core::NavigateTo(std::string pageTag)
 {
